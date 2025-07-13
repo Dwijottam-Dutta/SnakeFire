@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="rgb(0, 221, 110)" />
+  <title>SnakeFire</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/fire.css">
+  
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+
+<body>
+
+
+  <div id="loader">
+    <div class="ring ring1"></div>
+    <div class="ring ring2"></div>
+    <div class="ring ring3"></div>
+    <div class="ring ring4"></div>
+  </div>
+  
+  <div class="score_section">
+            <div id="scoreBox">0</div>
+        </div>
+    <!-- Score Section -->
+    <div id="master-board">
+        <div id="record">
+        <div id="hiscoreBox" class="font-score">
+            My HiScore: 0
+        </div>
+        <div id="world-hiscoreBox" class="font-score"> 
+          <div class="world-data">
+            <div id="world-hiscore-number">World Score </div>
+            <div id="world-hiscore-holder">Coming Soon</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="board"></div>
+      
+      <div id="controls">
+        <div id="trademark">SnakeFire <p id="developer">Made by <b>Dwijottam Dutta</b></p></div>
+        <div id="controls-box" style="display: none;">
+          <div class="control-btn" id="up-btn"><box-icon name='caret-up'></box-icon></div>
+
+          <div style="display: flex;width: 145px;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 9px;margin-bottom: 8px;">
+            <div class="control-btn" id="left-btn"><box-icon name='caret-left'></box-icon></div>
+            <div id="pause-btn" class="pause-btn"><box-icon name='pause' style="transform: scale(1.5);"></box-icon></div>
+            <div class="control-btn" id="right-btn"><box-icon name='caret-right'></box-icon></div>
+          </div>    
+          
+          <div class="control-btn" id="down-btn"><box-icon name='caret-down'></box-icon></div>
+        </div>
+
+        <div id="play-btn-game" >Start</div>
+    </div>
+      </div>
+      
+    </div>
+
+    <!-- Fire Animation CSS with trademark -->
+    <!-- <div id="trademark">SnakeFire <p id="developer">DJ DWAZZ</p>
+    </div> -->
+    <div class="fire">
+      <div class="fire-left">
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-main">
+        <div class="particle-fire"></div>
+      </div>
+      <div class="fire-right">
+        <div class="particle-fire"></div>
+      </div>
+    </div>
+
+
+</body>
+
+<script src="js/lib/confetti.js"></script>
+<script type="module" src="js/app.js"></script>
+<script src="js/checks.js"></script>
+
+
+</html>

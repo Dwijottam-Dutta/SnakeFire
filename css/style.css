@@ -1,0 +1,320 @@
+@import url("https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Potta+One&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --title-color: #252525;
+  -webkit-tap-highlight-color: transparent;
+  
+}
+
+html{
+    height: 100%;
+}
+
+body {
+  background-color: #00DD6E;
+  min-height: 100%;
+  height: 100%;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  transition: all 2s ease-in-out;
+  flex-direction: column;
+}
+
+
+#master-board{
+    position: relative;
+    z-index: 1;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+   
+#board {
+  height: 480px;
+  width: 480px;
+  min-height: 280px;
+  min-width: 280px;
+    display: grid
+;
+    grid-template-rows: repeat(17, 1fr);
+    grid-template-columns: repeat(17, 1fr);
+    background: rgb(84 255 158);
+    border: 3px solid var(--title-color);
+    box-shadow: 5px 5px var(--title-color);
+    border-radius: 10px;
+
+}
+
+#controls {
+    margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#controls-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.control-btn{
+    display: flex;
+        margin: 1px;
+    justify-content: center;
+    width: 35px;
+    align-items: center;
+    height: 35px;
+    background: rgba(251, 252, 252, 0.459);
+    border: 3px solid var(--title-color);
+    box-shadow: 3px 3px var(--title-color);
+    border-radius: 10px;
+    outline: 0;
+    transition: all .1s;
+    cursor: pointer;font-family: "New Tegomin", serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.pause-btn{
+    display: flex;
+        margin: 1px;
+    justify-content: center;
+    width: 50px;
+    align-items: center;
+    height: 50px;
+    background: rgba(251, 252, 252, 0.459);
+    border: 3px solid var(--title-color);
+    box-shadow: 3px 3px var(--title-color);
+    border-radius: 10px;
+    outline: 0;
+    transition: all .1s;
+    cursor: pointer;font-family: "New Tegomin", serif;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.control-btn:hover, .pause-btn:focus {
+    transform: translate(-2px, -2px);
+}
+
+.control-btn:active, .pause-btn:active {
+  box-shadow: 0px 3px var(--title-color);
+  transform: translateY(4px);
+}
+
+#play-btn-game{
+  display: flex;
+        margin: 1px;
+    justify-content: center;
+    width: 25%;
+    align-items: center;
+    height: 50px;
+    background: rgba(251, 252, 252, 0.459);
+    border: 3px solid var(--title-color);
+    box-shadow: 3px 3px var(--title-color);
+    border-radius: 10px;
+    outline: 0;
+    transition: all .1s;
+    cursor: pointer;font-family: "New Tegomin", serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.score_section {
+  /* border: 3px solid var(--title-color);
+    border-radius: 5px; */
+    text-align: center;
+    padding: 10px;
+}
+
+#trademark {
+  word-wrap: break-word;
+  font-family: "Potta One", cursive;
+  font-size: 45px;
+  text-align: start;
+  margin-top: 0px;
+  width: 70%;
+}
+#developer{
+  font-family: "New Tegomin", serif;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#scoreBox {
+  font-size: 50px;
+  font-weight: 100;
+  font-family: "Potta One", cursive;
+}
+
+#hiscore {
+  font-size: 30px;
+  font-weight: 100;
+  font-family: "New Tegomin", serif;
+}
+
+.font-score{
+  display: flex
+;
+    flex-direction: row;
+    width: 50%;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "New Tegomin", serif;
+    align-items: center;
+    justify-content: center;
+    border-right: #252525 2px solid;
+}
+
+#record {
+      margin-bottom: 13px;
+    display: flex
+;
+    flex-direction: row;
+    background: rgb(84 255 158);
+    border: 3px solid var(--title-color);
+    box-shadow: 5px 3px var(--title-color);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.world-data{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#world-hiscore-number{
+  font-size: 17px;
+}
+
+#world-hiscore-holder{
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+
+.head {
+  background: #3b3b3b;
+  border: 3px solid #252525;
+  /* box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1); */
+  /* transform: scale(1.02); */
+  border-radius: 0%;
+  z-index: 21;
+}
+
+.snake {
+  background-color: #00DD6E;
+  border: 3px solid #252525;
+  /* box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1); */
+    /* border-radius: 10%; */
+    z-index: 21;
+}
+
+.food {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* background: linear-gradient(#0A1931, #053742); */
+    /* box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+		inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+		5px 5px 15px rgba(0, 0, 0, 0.3),
+		-5px -5px 15px rgba(255, 255, 255, 0.1); */
+    /* border-radius: 5px; */
+  background-image: url("../assets/apple-119.tmp.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 20;
+    transform: scale(1.3);
+}
+
+/* Fire Defination */
+@keyframes lalala {
+
+  0% {
+    transform: rotate(360deg);
+  }
+}
+
+box-icon{
+  position: relative;
+  top: 1px;
+}
+
+@media screen and (max-width: 562px) {
+  #board {
+    height: 380px;
+    width: 380px;
+    border: 3px solid var(--title-color);
+    box-shadow: 5px 5px var(--title-color);
+    border-radius: 10px;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-columns: repeat(15, 1fr);
+  }
+
+  #trademark {
+   width: 77%;
+   font-size: 39px;
+  }
+  
+  #scoreBox {
+    font-size: 45px;
+  }
+
+  #controls-box {
+    width: 40%;
+  }
+  
+  .font-score {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  #board {
+    height: 310px;
+    width: 310px;
+    border: 3px solid var(--title-color);
+    box-shadow: 3px 3px var(--title-color);
+    border-radius: 10px;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  #play-btn-game{
+    font-size: 22px;
+  }
+  
+  #scoreBox {
+    font-size: 45px;
+  }
+  
+  .font-score {
+    font-size: 16px;
+  }
+}
+

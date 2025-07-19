@@ -30,7 +30,7 @@
     <div id="master-board">
         <div id="record">
         <div id="hiscoreBox" class="font-score">
-            My HiScore: 0
+            <box-icon type='solid' name='party'></box-icon> HiScore: 0
         </div>
         <div id="world-hiscoreBox" class="font-score"> 
           <div class="world-data">
@@ -43,11 +43,11 @@
       <div id="board"></div>
       
       <div id="controls">
-        <div id="trademark">SnakeFire <p id="developer">Made by <b>Dwijottam Dutta</b></p></div>
-        <div id="controls-box" style="display: none;">
+        <div id="trademark">SnakeFire <p id="developer">By <b>Dwijottam Dutta</b></p></div>
+        <div id="controls-box">
           <div class="control-btn" id="up-btn"><box-icon name='caret-up'></box-icon></div>
 
-          <div style="display: flex;width: 145px;flex-direction: row;justify-content: space-between;align-items: center;margin-top: 9px;margin-bottom: 8px;">
+          <div id="control-btn-mid-section" style="display: flex;width: 145px;flex-direction: row;align-items: center;margin-top: 9px;margin-bottom: 8px;">
             <div class="control-btn" id="left-btn"><box-icon name='caret-left'></box-icon></div>
             <div id="pause-btn" class="pause-btn"><box-icon name='pause' style="transform: scale(1.5);"></box-icon></div>
             <div class="control-btn" id="right-btn"><box-icon name='caret-right'></box-icon></div>
@@ -56,7 +56,7 @@
           <div class="control-btn" id="down-btn"><box-icon name='caret-down'></box-icon></div>
         </div>
 
-        <div id="play-btn-game" >Start</div>
+        <div id="play-btn-game"><box-icon name='play' style='transform: scale(1.5); margin-right: 5px; margin-top:4px'></box-icon>Play</div>
     </div>
       </div>
       
@@ -81,8 +81,9 @@
 </body>
 
 <script src="js/lib/confetti.js"></script>
-<script type="module" src="js/app.js"></script>
-<script src="js/checks.js"></script>
+<script defer src="js/$.js"></script>
+<script defer src="js/device.js"></script>
+<script defer src="js/game.js"></script>
 
 
 </html>

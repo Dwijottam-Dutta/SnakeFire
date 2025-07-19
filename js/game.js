@@ -1,54 +1,29 @@
-// Game Constants & Variables
-let inputDir = {
-    x: 0,
-    y: 0
-};
-const foodSound = new Audio('assets/food.mp3');
-const gameOverSound = new Audio('assets/gameover.mp3');
-const moveSound = new Audio('assets/move.mp3');
-// const musicSound = new Audio('assets/music1.mp3');
+/**
+ * @file js/game.js
+ * @description: This file contains the main game logic and gameEngine for the Snake game.
+ *               It handles the snake movement, food generation, collision detection, and rendering.
+ *               It also manages the game state, including score and speed adjustments, and many moree..
+ * 
+ * @author: @Dwijottam-Dutta
+ * @date 15-07-2025
+ */
 
-// Screen Width Media Queries Constants
-const narrowscreen = window.matchMedia('(max-width: 562px)');
-const narrowestscreen = window.matchMedia('(max-width: 435px)');
-
-// W-A-S-D BUTTONS
-const w = document.getElementById("up-btn");
-const a = document.getElementById("left-btn");
-const s = document.getElementById("down-btn");
-const d = document.getElementById("right-btn");
-
-const pauseBtn = document.getElementById("pause-btn");
-const playGameBtn = document.getElementById("play-btn-game");
 let highScore = localStorage.getItem("highScore");
 if (highScore === null) {
     highScore = localStorage.setItem("highScore", 0);
     highScore = localStorage.getItem("highScore");
-    hiscoreBox.innerHTML = "My HiScore: " + highScore;
+    hiscoreBox.innerHTML = "<box-icon type='solid' name='party'></box-icon>&nbsp;HiScore: " + highScore;
 }
 else {
-    hiscoreBox.innerHTML = "My HiScore: " + highScore;
+    hiscoreBox.innerHTML = "<box-icon type='solid' name='party'></box-icon>&nbsp;HiScore: " + highScore;
 }
-let speed = 6;          // Initial speed of the snake
-let score = 0;          // Initial score of the game
-let lastPaintTime = 0;
-var isPaused = false;   // Initial state of the game
 
-let snakeArr = [{
-    x: 9,
-    y: 8
-}];
-
-var food = {
-    x: 6,
-    y: 7
-};
 
 function main(ctime) {
     if (!isPaused) {
         window.requestAnimationFrame(main);
         // console.log(ctime)
-        if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
+        if ((ctime - lastPaintTime) / 500 < 1 / speed) {
             return;
         }
         lastPaintTime = ctime;
@@ -58,36 +33,39 @@ function main(ctime) {
 
 // Check if the snake collides with itself or the wall
 function isCollide(snake) {
-    // If snake bump into yourself 
-    for (let i = 1; i < snakeArr.length; i++) {
+
+    // If snake bump into itself 
+    for (let i = 3; i < snakeArr.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
             return true;
         }
     }
 
-    // If snake bump into the wall small width device
-    if (narrowscreen.matches) {
+    // If snake bump into the wall
+
+    // Small Device Width Adjustments
+    if (narrowscreen.matches || shortestscreen.matches) {
+        if (snake[0].x >= 18 || snake[0].x <= 0 || snake[0].y >= 18 || snake[0].y <= 0) {
+            return true;
+        }
+    }
+    // Smallest deivce Width Adjustments
+    if (narrowestscreen.matches) {
         if (snake[0].x >= 16 || snake[0].x <= 0 || snake[0].y >= 16 || snake[0].y <= 0) {
             return true;
         }
     }
-    // If you bump into the wall smallest width deivce
-    if (narrowestscreen.matches) {
-        if (snake[0].x >= 13 || snake[0].x <= 0 || snake[0].y >= 13 || snake[0].y <= 0) {
-            return true;
-        }
+
+    // Normal Device Width Adjustments
+    if (snake[0].x >= 21 || snake[0].x <= 0 || snake[0].y >= 21 || snake[0].y <= 0) {
+        return true;
     }
 
-    // If you bump into the wall normal width device
-    if (snake[0].x >= 18 || snake[0].x <= 0 || snake[0].y >= 18 || snake[0].y <= 0) {
-           return true;
-    }
-    
     return false;
 }
 
 
-
+// Fucking made a gameENGINE by myself can't believe it! 😎
 function gameENGINE() {
 
     // Updating the snake array & Food
@@ -99,25 +77,29 @@ function gameENGINE() {
             y: 0
         };
 
-        // alert("Game Over.. !!");
-
-        playGameBtn.style.display = "flex";
-        document.getElementById("controls-box").style.display = "none";
-        if (narrowestscreen.matches) {
-            document.getElementById("trademark").style.display = "block";
-        }
-
-        snakeArr = [{
-            x: 9,
-            y: 8
-        }];
         score = 0;
+
+        // GAME OVER
         scoreBox.innerHTML = "Game Over";
 
         setTimeout(() => {
             scoreBox.innerHTML = score;
         }, 2000);
-        speed = 6;
+
+        playGameBtn.style.display = "flex";
+        document.getElementById("controls-box").style.display = "none";
+        if (narrowscreen.matches) {
+            document.getElementById("trademark").style.display = "block";
+        }
+        WASD = false;
+
+        snakeArr = [{
+            x: 9,
+            y: 8
+        }];
+
+        speed = 2; // Reset speed to initial value
+
         // musicSound.play();
     }
 
@@ -127,16 +109,16 @@ function gameENGINE() {
         score += 1;
 
         if (score == 10 || score == 20 || score == 30 || score == 40 || score == 50) {
-            speed += 1;
+            speed += 0.5;
             congo();
         }
 
-        
+
         if (score > highScore) {
             highScore = score;
             localStorage.setItem("highScore", highScore);
             hiscoreBox.innerHTML = "My HiScore: " + highScore;
-            
+
         }
 
         scoreBox.innerHTML = score;
@@ -146,15 +128,16 @@ function gameENGINE() {
         });
 
         var a = 2;
-        var b = 17;
-        if (narrowscreen.matches) {
+        var b = 20;
+        if (narrowscreen.matches || shortestscreen.matches) {
             a = 2;
-            b = 13;
+            b = 17;
         }
         if (narrowestscreen.matches) {
             a = 2;
-            b = 11;
+            b = 15;
         }
+
         food = {
             x: Math.round(a + (b - a) * Math.random()),
             y: Math.round(a + (b - a) * Math.random())
@@ -196,61 +179,38 @@ function gameENGINE() {
 }
 
 
-
-
-
-
-
 // Here we gooo!!!!
 window.requestAnimationFrame(main);
 
 w.addEventListener("click", function () {
-    moveSound.play();
-    inputDir.x = 0;
-    inputDir.y = -1;
-    w.style.boxShadow = "0px 3px var(--title-color)";
-    w.style.transform = "translateY(4px)";
-    setTimeout(() => {
-        w.style.boxShadow = "3px 3px var(--title-color)";
-        w.style.transform = "none";
-    }, 300);
+    if (WASD) {
+        inputDir.x = 0;
+        inputDir.y = -1;
+    }
+    // moveSound.play();
 });
 
 a.addEventListener("click", function () {
-    moveSound.play();
-    inputDir.x = -1;
-    inputDir.y = 0;
-    a.style.boxShadow = "0px 3px var(--title-color)";
-    a.style.transform = "translateY(4px)";
-    setTimeout(() => {
-        a.style.boxShadow = "3px 3px var(--title-color)";
-        a.style.transform = "none";
-    }, 300);
+    if (WASD) {
+        inputDir.x = -1;
+        inputDir.y = 0;
+    }
 });
 
 s.addEventListener("click", function () {
-    moveSound.play();
-    inputDir.x = 0;
-    inputDir.y = 1;
-    s.style.boxShadow = "0px 3px var(--title-color)";
-    s.style.transform = "translateY(4px)";
-    setTimeout(() => {
-        s.style.boxShadow = "3px 3px var(--title-color)";
-        s.style.transform = "none";
-    }, 300);
+    if (WASD) {
+        inputDir.x = 0;
+        inputDir.y = 1;
+    }
 });
 
 d.addEventListener("click", function () {
-    moveSound.play();
-    inputDir.x = 1;
-    inputDir.y = 0;
-    d.style.boxShadow = "0px 3px var(--title-color)";
-    d.style.transform = "translateY(4px)";
-    setTimeout(() => {
-        d.style.boxShadow = "3px 3px var(--title-color)";
-        d.style.transform = "none";
-    }, 300);
+    if (WASD) {
+        inputDir.x = 1;
+        inputDir.y = 0;
+    }
 });
+
 
 pauseBtn.addEventListener("click", function () {
     isPaused = !isPaused;
@@ -260,46 +220,34 @@ pauseBtn.addEventListener("click", function () {
     }
 });
 
-
 playGameBtn.addEventListener("click", function () {
     playGameBtn.style.display = "none";
     document.getElementById("controls-box").style.display = "flex";
-    if (narrowestscreen.matches) {
+    if (narrowscreen.matches) {
         document.getElementById("trademark").style.display = "none";
     }
+    WASD = true;
+    w.click();
+    isPaused = false;
+    pauseBtn.innerHTML = "<box-icon name='pause' style='transform: scale(1.5);'></box-icon>";
+    score = 0;
 });
-
-
-
-
-// If device is not mobile, show the WASD keys insead of arrow buttons
-function isMobileDevice() {
-    return window.matchMedia("only screen and (max-width: 768px)").matches;
-}
-if (!isMobileDevice()) {
-    w.innerHTML = "W";
-    a.innerHTML = "A";
-    s.innerHTML = "S";
-    d.innerHTML = "D";
-}
 
 
 //Checking user is changing the tab
 document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === "visible") {
+    if (document.visibilityState !== "visible") {
         // musicSound.play();
-    } else {
-        // musicSound.pause();
-        alert("RESUME ?")
+        if (WASD) {
+            isPaused = true;
+            pauseBtn.innerHTML = "<box-icon name='play' style='transform: scale(1.5);'></box-icon>";
+        }
     }
-
 });
 
 window.addEventListener('keydown', e => {
     e.preventDefault();
 
-    // Start the game
-    playGameBtn.click();
     // musicSound.play(); // if stopped background music then start again
     switch (e.key) {
         case "w":
@@ -320,6 +268,10 @@ window.addEventListener('keydown', e => {
 
         case "q":
             pauseBtn.click();
+            break;
+
+        case "Enter":
+            playGameBtn.click();
             break;
 
 

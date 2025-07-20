@@ -1,7 +1,7 @@
 {
     "name": "SnakeFire",
     "short_name": "SnakeFire",
-    "start_url": "/",
+    "start_url": "/SnakeFire",
     "lang": "en-US",
     "orientation": "portrait",
     "display": "standalone",
@@ -13,12 +13,12 @@
     ],
     "icons": [
         {
-            "src": "./assets/1024.png",
+            "src": "./assets/lite.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "./assets/1024.png",
+            "src": "./assets/lite.png",
             "sizes": "512x512",
             "type": "image/png"
         }
